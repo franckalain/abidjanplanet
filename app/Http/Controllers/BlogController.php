@@ -19,4 +19,10 @@ class BlogController extends Controller
         ->paginate($this->limit);
 ;        return view("index", compact('posts'));
     }
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return view("show", compact('post'));
+    }
 }
