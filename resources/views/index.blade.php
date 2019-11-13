@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-            @foreach($WebProgramming->posts()->orderBy('created_at', 'desc')->take(4)->get() as $post)
+            @foreach($Internet->posts()->orderBy('created_at', 'desc')->take(4)->get() as $post)
                     <div class="post-item ver1 overlay video" data-videourl="{{$post->excerpt}}" data-videosite="youtube">
                         <div class="images">@if($post->image_url)
                     <div class="post-item-image">

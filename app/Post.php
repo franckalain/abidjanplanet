@@ -11,6 +11,10 @@ use Carbon\Carbon;
 class Post extends Model
 
 {
+    /* Associate to view count method 1 in show method
+    protected $fillable = ['view_count'];
+    */
+
     protected $dates = ['published_at'];
 
     public function author()
