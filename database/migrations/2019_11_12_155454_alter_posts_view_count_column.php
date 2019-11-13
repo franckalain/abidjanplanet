@@ -13,7 +13,9 @@ class AlterPostsViewCountColumn extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('posts', function(Blueprint $table){
+            $table->integer('view_count');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class AlterPostsViewCountColumn extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('posts', function(Blueprint $table){
+            $table->dropColumn('view_count');
+        });
     }
 }
