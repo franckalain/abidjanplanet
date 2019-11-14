@@ -24,12 +24,15 @@
                     </div>
 
                     <div class="widget">
+
+                        <div class="widget">
                         <div class="widget-heading">
-                            <h4>Popular Posts</h4>
+                            <h4>Related Posts</h4>
                         </div>
                         <div class="widget-body">
                             <ul class="popular-posts">
-                            @foreach($popularPosts as $post)
+                            @if(isset($relatedPosts))
+                            @foreach($relatedPosts as $post)
                                 <li>
                                     @if($post->image_thumb_url)
                                     <div class="post-image">
@@ -46,6 +49,7 @@
                                     </div>
                                 </li>
                             @endforeach
+                            @endif
                             </ul>
                         </div>
                     </div>

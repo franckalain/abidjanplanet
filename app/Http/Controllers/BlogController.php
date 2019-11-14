@@ -31,6 +31,7 @@ class BlogController extends Controller
     public function index()
     {
       return view('index')->with('categories', Category::take(20)->get())
+      ->with('webdesign', Category::find(1))
       ->with('WebProgramming', Category::find(2))
       ->with('Internet', Category::find(3))
       ->with('Photography', Category::find(5));
@@ -61,6 +62,11 @@ class BlogController extends Controller
         # Method 2
         $post->increment('view_count');
 
-        return view("show", compact('post'));
+        $relatedPosts = $post->category->posts() // get all related posts (in same category)
+                             ->where('id', '!=', $post->id) // exclude the current post
+                             ->take(10) // take only 5 posts for example
+                             ->orderBy('title', 'asc')->get();
+
+        return view("show", compact('post'))->with('relatedPosts', $relatedPosts)->with('title', $post->title);
     }
 }
