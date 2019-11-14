@@ -10,6 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/home', 'Backend\HomeController@index')->name('home');
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/login');
+})->name('logout');
 
 Route::get('/', [
     'uses' => 'BlogController@index',
@@ -30,3 +40,6 @@ Route::get('/category/{id}', [
 	'uses' => 'BlogController@category',
 	'as' => 'category.single'
 	]);
+
+
+
