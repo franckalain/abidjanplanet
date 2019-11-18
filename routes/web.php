@@ -13,6 +13,15 @@
 Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
+
+Route::resource('/backend/articles', 'Backend\BlogController', ['names' => [
+    'index' => 'backend.articles.index',
+    'create' => 'backend.articles.create',
+    'edit' => 'backend.articles.edit',
+    'destroy' => 'backend.articles.destroy'
+]]);
+
+
 Route::get('logout', function ()
 {
     auth()->logout();
@@ -39,7 +48,8 @@ Route::get('/category/{category}', [
 Route::get('/category/{id}', [
 	'uses' => 'BlogController@category',
 	'as' => 'category.single'
-	]);
+    ]);
+
 
 
 
