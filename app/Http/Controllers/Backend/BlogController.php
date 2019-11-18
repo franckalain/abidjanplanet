@@ -13,6 +13,14 @@ class BlogController extends BackendController
 {
 
     protected $limit = 5;
+    protected $uploadPath;
+
+    public function __construct(){
+        parent::__construct();
+        $this->uploadPath = public_path('img');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +53,26 @@ class BlogController extends BackendController
     public function store(Requests\PostRequest $request)
     {
 
-        $request->user()->posts()->create($request->all());
+        $data = $this->handleRequest($request);
+        $request->user()->posts()->create($data);
 
         return redirect(route('backend.articles.index'))->with('message', 'Article a été crée avec succès !');
+    }
+
+    private function handleRequest($request)
+    {
+        $data = $request->all();
+
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $destination = $this->uploadPath;
+            $image->move($destination, $fileName);
+            $data['image'] = $fileName;
+        }
+
+        return $data;
     }
 
     /**

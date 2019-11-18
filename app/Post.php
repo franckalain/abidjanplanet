@@ -15,7 +15,7 @@ class Post extends Model
     protected $fillable = ['view_count'];
     */
 
-    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id'];
+    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id', 'image'];
 
     protected $dates = ['published_at'];
 
