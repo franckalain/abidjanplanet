@@ -13,7 +13,7 @@
       </h1>
       <ol class="breadcrumb">
         <li>
-            <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+            <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Tableau de Bord</a>
         </li>
         <li><a href="{{route('backend.articles.index')}}">Articles</a></li>
         <li class="active">Tous les articles</li>
