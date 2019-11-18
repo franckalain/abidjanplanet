@@ -135,6 +135,7 @@ return [
     */
 
     'providers' => [
+        Intervention\Image\ImageServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
@@ -190,6 +191,7 @@ return [
     */
 
     'aliases' => [
+        'Image' => Intervention\Image\Facades\Image::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
