@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 //use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
 use App\Post;
 
 class BlogController extends BackendController
@@ -40,9 +42,12 @@ class BlogController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\PostRequest $request)
     {
-        //
+
+        $request->user()->posts()->create($request->all());
+
+        return redirect(route('backend.articles.index'))->with('message', 'Article a été crée avec succès !');
     }
 
     /**
