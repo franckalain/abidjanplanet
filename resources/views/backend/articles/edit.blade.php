@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'Admin | Ajouter nouvel article')
+@section('title', 'Admin | Editer article')
 
 
 @section('content')
@@ -9,14 +9,14 @@
     <section class="content-header">
       <h1>
         Articles
-        <small>Ajouter nouvel article</small>
+        <small>Editer article</small>
       </h1>
       <ol class="breadcrumb">
         <li>
             <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Tableau de bord</a>
         </li>
         <li><a href="{{route('backend.articles.index')}}">Articles</a></li>
-        <li class="active">Ajouter nouvel article</li>
+        <li class="active">Editer article</li>
       </ol>
     </section>
 
@@ -24,8 +24,8 @@
     <section class="content">
         <div class="row">
         {!! Form::model($post, [
-                    'method' => 'POST',
-                    'route' => 'articles.store',
+                    'method' => 'PUT',
+                    'route' => ['articles.update', $post->id],
                     'files' => TRUE,
                     'id' => 'post-form'
                 ]) !!}
