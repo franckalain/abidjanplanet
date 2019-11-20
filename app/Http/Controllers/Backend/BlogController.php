@@ -19,7 +19,7 @@ class BlogController extends BackendController
 
     public function __construct(){
         parent::__construct();
-        $this->uploadPath = public_path('cms.image.directory');
+        $this->uploadPath = public_path('img');
     }
 
 
@@ -64,7 +64,6 @@ class BlogController extends BackendController
     private function handleRequest($request)
     {
         $data = $request->all();
-
         if($request->hasFile('image'))
         {
             $image = $request->file('image');
@@ -72,23 +71,22 @@ class BlogController extends BackendController
 
             $destination = $this->uploadPath;
 
-            $successUploaded = $image->move($destination, $fileName);
+            $successUploaded =  $image->move($destination, $fileName);
 
             if($successUploaded)
             {
-                $width = config('cms.image.thumbnail.width');
-                $height = config('cms.image.thumbnail.height');
+
                 $extension = $image->getClientOriginalExtension();
                 $thumbnail = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
 
+
                 Image::make($destination . '/' . $fileName)
-                ->resize($width, $height)
-                ->save($destination . '/' . $thumbnail);
+                    ->resize(250, 170)
+                    ->save($destination . '/' . $thumbnail);
             }
 
             $data['image'] = $fileName;
         }
-
         return $data;
     }
 
@@ -127,7 +125,7 @@ class BlogController extends BackendController
         $post = Post::findOrFail($id);
         $data = $this->handleRequest($request);
         $post->update($data);
-        return redirect(route('backend.articles.index'))->with('message', 'Article a été mise à jour avec succès !');
+        return redirect(route('backend.articles.index'))->with('message', 'Votre Article a été mise à jour avec succès !');
 
     }
 

@@ -10,7 +10,8 @@
                     @if($post->image_url)
                         <div class="images">
                             <div class="post-item-image">
-                                <img src="{{$post->image_url}}" alt="">
+                                <img src="{{$post->image_url}}" alt="image" width="400" height="250">
+
                             </div>
                         </div>
                     @endif
