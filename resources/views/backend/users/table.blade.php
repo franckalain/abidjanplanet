@@ -8,6 +8,7 @@
         </tr>
     </thead>
     <tbody>
+    <?php $currentUser = auth()->user(); ?>
         @foreach($users as $user)
 
             <tr>
@@ -15,7 +16,7 @@
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-xs btn-default">
                             <i class="fa fa-edit"></i>
                         </a>
-                        @if($user->id == config('cms.default_user_id'))
+                        @if($user->id == config('cms.default_user_id') || $user->id == $currentUser->id)
                             <button onclick="return false" type="submit" class="btn btn-xs btn-danger disabled">
                                 <i class="fa fa-times"></i>
                             </button>
