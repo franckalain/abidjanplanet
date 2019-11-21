@@ -25,10 +25,16 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
-            <div class="box-header">
+            <div class="box-header clearfix">
                 <div class="pull-left">
                     <a href="{{route('backend.articles.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter un nouvel article</a>
                 </div>
+
+                <div class="pull-right" style="padding:7px 0;">
+                    <a href="?status=all">Tous |</a>
+                    <a href="?status=trash">Corbeille</a>
+                </div>
+
             </div>
               <!-- /.box-header -->
               <div class="box-body ">
@@ -40,41 +46,14 @@
                         <strong>Aucun enregistrement trouvé</strong>
                     </div>
                 @else
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <td width="80">Action</td>
-                                <td>Titre</td>
-                                <td width="120">Auteur</td>
-                                <td width="150">Categorie</td>
-                                <td width="170">Date</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($posts as $post)
-                            <tr>
-                                <td>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['backend.articles.destroy', $post->id]]) !!}
-                                <a href="{{route('backend.articles.edit', $post->id)}}" class="btn btn-xs btn-default">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <button type="submit" class="btn btn-xs btn-danger">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                                {!! Form::close() !!}
-                                </td>
-                                <td>{{$post->title}}</td>
-                                <td>{{$post->author->name}}</td>
-                                <td>{{$post->category ? $post->category->title : ''}}</td>
-                                <td>
-                                    <abbr title="{{$post->dateFormatted(true)}}">{{$post->dateFormatted()}}</abbr> |
-                                    {!!$post->publicationLabel()!!}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                    @if($onlyTrashed)
+                            @include('backend.articles.table-trash')
+                        @else
+                            @include('backend.articles.table')
                     @endif
+
+                @endif
               </div>
               <!-- /.box-body -->
                 <div class="box-footer clearfix">

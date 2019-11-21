@@ -28,11 +28,23 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('category', 'author')->latest()->paginate($this->limit);
-        $postCount = Post::count();
-        return view('backend.articles.index', compact('posts', 'postCount'));
+
+        if(($status = $request->get('status')) && $status == 'trash')
+        {
+            $posts = Post::onlyTrashed()->with('category', 'author')->latest()->paginate($this->limit);
+            $postCount = Post::onlyTrashed()->count();
+            $onlyTrashed = TRUE;
+        }
+
+        else{
+            $posts = Post::with('category', 'author')->latest()->paginate($this->limit);
+            $postCount = Post::count();
+            $onlyTrashed = FALSE;
+        }
+
+        return view('backend.articles.index', compact('posts', 'postCount', 'onlyTrashed'));
     }
 
     /**
@@ -140,6 +152,13 @@ class BlogController extends BackendController
         Post::findOrFail($id)->delete();
 
         return redirect('/backend/articles')->with('trash-message', ['Votre article a été envoyé dans la corbeille !', $id]);
+    }
+
+    public function forceDestroy($id)
+    {
+        Post::withTrashed()->findOrFail($id)->forceDelete();
+
+        return redirect('/backend/articles?status=trash')->with('message', 'Votre article a été supprimé avec succès !');
     }
 
     public function restore($id)

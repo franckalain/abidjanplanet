@@ -19,6 +19,11 @@ Route::put('/backend/articles/restore/{article}', [
     'as' => 'backend.articles.restore'
 ]);
 
+Route::delete('/backend/articles/force-destroy/{article}', [
+    'uses' => 'Backend\BlogController@forceDestroy',
+    'as' => 'backend.articles.force-destroy'
+]);
+
 Route::resource('/backend/articles', 'Backend\BlogController', ['names' => [
     'index' => 'backend.articles.index',
     'create' => 'backend.articles.create',
