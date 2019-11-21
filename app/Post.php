@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use Illuminate\Database\Eloquent\Model;
 
 use GrahamCampbell\Markdown\Facades\Markdown;
@@ -14,6 +16,7 @@ class Post extends Model
     /* Associate to view count method 1 in show method
     protected $fillable = ['view_count'];
     */
+    use SoftDeletes;
 
     protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id', 'image'];
     protected $dates    = ['published_at'];

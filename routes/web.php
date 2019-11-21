@@ -14,6 +14,11 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
+Route::put('/backend/articles/restore/{article}', [
+    'uses' => 'Backend\BlogController@restore',
+    'as' => 'backend.articles.restore'
+]);
+
 Route::resource('/backend/articles', 'Backend\BlogController', ['names' => [
     'index' => 'backend.articles.index',
     'create' => 'backend.articles.create',

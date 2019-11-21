@@ -32,12 +32,8 @@
             </div>
               <!-- /.box-header -->
               <div class="box-body ">
-              @if(session('message'))
-                <div class="alert alert-info">
-                    {{session('message')}}
-                </div>
-              @endif
 
+              @include('backend.articles.message')
 
                 @if(! $posts->count())
                     <div class="alert alert-danger">
@@ -58,12 +54,14 @@
                             @foreach($posts as $post)
                             <tr>
                                 <td>
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['backend.articles.destroy', $post->id]]) !!}
                                 <a href="{{route('backend.articles.edit', $post->id)}}" class="btn btn-xs btn-default">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="{{route('backend.articles.destroy', $post->id)}}" class="btn btn-xs btn-danger">
+                                <button type="submit" class="btn btn-xs btn-danger">
                                     <i class="fa fa-times"></i>
-                                </a>
+                                </button>
+                                {!! Form::close() !!}
                                 </td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->author->name}}</td>

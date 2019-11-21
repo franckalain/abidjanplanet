@@ -137,6 +137,16 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        return redirect('/backend/articles')->with('trash-message', ['Votre article a été envoyé dans la corbeille !', $id]);
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect('/backend/articles')->with('message', 'Votre article a été restauré de la corbeille');
     }
 }
