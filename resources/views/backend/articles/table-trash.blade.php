@@ -28,8 +28,8 @@
             <td>{{$post->author->name}}</td>
             <td>{{$post->category ? $post->category->title : ''}}</td>
             <td>
-                <abbr title="{{$post->dateFormatted(true)}}">{{$post->dateFormatted()}}</abbr> |
-                {!!$post->publicationLabel()!!}
+                <abbr title="{{$post->dateFormatted(true)}}">{{$post->dateFormatted()}}</abbr>
+
             </td>
         </tr>
         @endforeach

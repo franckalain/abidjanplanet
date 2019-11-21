@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class BlogController extends BackendController
 {
 
-    protected $limit = 5;
+
     protected $uploadPath;
 
     public function __construct(){
@@ -156,7 +156,10 @@ class BlogController extends BackendController
 
     public function forceDestroy($id)
     {
-        Post::withTrashed()->findOrFail($id)->forceDelete();
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->forceDelete();
+
+        $this->removeImage($post->image);
 
         return redirect('/backend/articles?status=trash')->with('message', 'Votre article a été supprimé avec succès !');
     }
@@ -167,5 +170,19 @@ class BlogController extends BackendController
         $post->restore();
 
         return redirect('/backend/articles')->with('message', 'Votre article a été restauré de la corbeille');
+    }
+
+    private function removeImage($image)
+    {
+        if ( ! empty($image) )
+        {
+            $imagePath     = $this->uploadPath . '/' . $image;
+            $ext           = substr(strrchr($image, '.'), 1);
+            $thumbnail     = str_replace(".{$ext}", "_thumb.{$ext}", $image);
+            $thumbnailPath = $this->uploadPath . '/' . $thumbnail;
+
+            if ( file_exists($imagePath) ) unlink($imagePath);
+            if ( file_exists($thumbnailPath) ) unlink($thumbnailPath);
+        }
     }
 }

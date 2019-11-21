@@ -31,6 +31,19 @@ Route::resource('/backend/articles', 'Backend\BlogController', ['names' => [
     'destroy' => 'backend.articles.destroy'
 ]]);
 
+Route::resource('/backend/categories', 'Backend\CategoriesController', ['names' => [
+    'index' => 'backend.categories.index',
+    'create' => 'backend.categories.create']]);
+
+Route::resource('/backend/users', 'Backend\UsersController', ['names' => [
+    'index' => 'backend.users.index',
+    'create' => 'backend.users.create']]);
+
+Route::get('/backend/users/confirm/{users}', [
+    'uses' => 'Backend\UsersController@confirm',
+    'as' => 'backend.users.confirm'
+]);
+
 
 Route::get('logout', function ()
 {

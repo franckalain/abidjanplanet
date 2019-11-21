@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'Admin | Articles Index')
+@section('title', 'Admin | Utilisateurs')
 
 
 @section('content')
@@ -8,15 +8,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Articles
-        <small>Afficher tous les articles</small>
+        Categories
+        <small>Afficher tous les Utilisateurs</small>
       </h1>
       <ol class="breadcrumb">
         <li>
             <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Tableau de Bord</a>
         </li>
-        <li><a href="{{route('backend.articles.index')}}">Articles</a></li>
-        <li class="active">Tous les articles</li>
+        <li><a href="{{route('backend.users.index')}}">Utilisateurs</a></li>
+        <li class="active">Toutes les Utilisateurs</li>
       </ol>
     </section>
 
@@ -27,12 +27,11 @@
             <div class="box">
             <div class="box-header clearfix">
                 <div class="pull-left">
-                    <a href="{{route('backend.articles.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter un nouvel article</a>
+                    <a href="{{route('backend.users.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter un nouvel Utilisateur</a>
                 </div>
 
-                <div class="pull-right" style="padding:7px 0;">
-                    <a href="?status=all">Tous |</a>
-                    <a href="?status=trash">Corbeille</a>
+                <div class="pull-right">
+
                 </div>
 
             </div>
@@ -41,29 +40,24 @@
 
               @include('backend.partials.message')
 
-                @if(! $posts->count())
+                @if(! $users->count())
                     <div class="alert alert-danger">
                         <strong>Aucun enregistrement trouvé</strong>
                     </div>
                 @else
-
-                    @if($onlyTrashed)
-                            @include('backend.articles.table-trash')
-                        @else
-                            @include('backend.articles.table')
-                    @endif
-
+                    @include('backend.users.table')
                 @endif
+
               </div>
               <!-- /.box-body -->
                 <div class="box-footer clearfix">
                    <div class="pull-left">
-                        {{$posts->appends(Request::query())->render()}}
+                        {{$users->appends(Request::query())->render()}}
                     </div>
 
                     <div class="pull-right">
 
-                        <small> {{ $postCount }} Items </small>
+                        <small> {{ $userCount }} Items </small>
                     </div>
 
                 </div>

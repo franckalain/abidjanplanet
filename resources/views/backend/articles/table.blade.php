@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($posts as $post)
+    @foreach($posts as $post)
         <tr>
             <td>
             {!! Form::open(['method' => 'DELETE', 'route' => ['backend.articles.destroy', $post->id]]) !!}
