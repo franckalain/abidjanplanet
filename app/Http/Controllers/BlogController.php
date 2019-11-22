@@ -16,25 +16,52 @@ class BlogController extends Controller
 /*
     public function index()
     {
+        /*
+        $categories = Category::with(['posts' => function($query){
+            $query->published();
+        }])->orderBy('title', 'asc')->get();
+        */
+ /*
         $categories = Category::with(['posts' => function($query){
             $query->published();
         }])->orderBy('title', 'asc')->get();
 
         $posts = Post::with('author')
         ->latestFirst()
-        ->published()
-        ->paginate($this->limit);
-;        return view("index", compact('posts', 'categories'));
+        ->published();
+
+        if($term = request('term'))
+        {
+            $posts->where('title', 'LIKE', "%{$term}%");
+        }
+
+        $posts = $posts->paginate($this->limit);
+      return view("index", compact('posts', 'categories'))->with('infography', Category::find(15))->with('photoshop', Category::find(16));
     }
-*/
+    */
 
     public function index()
     {
-      return view('index')->with('categories', Category::take(20)->get())
-      ->with('webdesign', Category::find(1))
-      ->with('WebProgramming', Category::find(2))
-      ->with('Internet', Category::find(3))
-      ->with('Photography', Category::find(5));
+        $categories = Category::with(['posts' => function($query){
+            $query->published();
+        }])->orderBy('title', 'asc')->get();
+
+        $posts = Post::with('author')
+        ->latestFirst()
+        ->published();
+
+        if($term = request('term'))
+        {
+            $posts->where('title', 'LIKE', "%{$term}%");
+        }
+
+        $posts = $posts->paginate($this->limit);
+
+        return view("index", compact('posts', 'categories', \App\Category::take(20)->get()))
+        ->with('webdesign', Category::find(1))
+        ->with('WebProgramming', Category::find(2))
+        ->with('internet', Category::find(14))
+        ->with('Photography', Category::find(5));
     }
 
 

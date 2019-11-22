@@ -4,6 +4,7 @@
 
 
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -39,3 +40,14 @@
 @endsection
 
 @include('backend.articles.script')
+
+
+@section('scripts')
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
+<script>
+    $(document).ready(function() {
+    $('#summernote').summernote();
+    });
+</script>
+@stop

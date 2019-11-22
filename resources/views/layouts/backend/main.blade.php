@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="{{asset('/backend/css/skins/_all-skins.min.css')}}">
 
   <link rel="stylesheet" href="{{asset('backend/plugins/simplemde/simplemde.min.css')}}">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('backend/css/custom.css')}}">
@@ -34,6 +37,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+
 <div class="wrapper">
 
   @include('layouts.backend.navbar')
@@ -59,11 +63,16 @@
 <script src="{{asset('backend/js/bootstrap.min.js')}}"></script>
 
 <script src="{{asset('backend/plugins/simplemde/simplemde.min.js')}}"></script>
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('backend/js/app.min.js')}}"></script>
-@yield('script')
+@yield('scripts')
 </body>
 </html>

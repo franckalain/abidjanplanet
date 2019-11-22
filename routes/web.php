@@ -14,6 +14,17 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
+
+Route::get('/results', function(){
+    $posts = \App\Post::where('title', 'like', '%' . request('query') . '%')->get();
+
+    return view('results')->with('posts', $posts)
+            ->with('title', 'Search results: ' . request('query'))
+            ->with('categories', \App\Category::take(4)->get())
+            ->with('query', request('query'));
+});
+
+
 Route::put('/backend/articles/restore/{article}', [
     'uses' => 'Backend\BlogController@restore',
     'as' => 'backend.articles.restore'

@@ -22,10 +22,13 @@
                                     <li><i class="fa fa-clock-o"></i><time> {{$post->date}}</time></li>
                                     <li><i class="fa fa-tags"></i><a href="#"> Blog</a></li>
                                     <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
+
+                                    <li><div class="fb-like" data-href="{{$post->title}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></li>
+
                                 </ul>
                             </div>
 
-                            {!! $post->body_html !!}
+                            {!! $post->body !!}
 
                         </div>
                     </div>
