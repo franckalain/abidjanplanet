@@ -43,11 +43,14 @@
 
 
 @section('scripts')
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 
 <script>
-    $(document).ready(function() {
-    $('#summernote').summernote();
-    });
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
+
 @stop

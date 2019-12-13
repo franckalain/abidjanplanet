@@ -82,8 +82,18 @@ Route::get('/category/{category}', [
 Route::get('/category/{id}', [
 	'uses' => 'BlogController@category',
 	'as' => 'category.single'
-    ]);
+]);
 
+Route::get('/clear-cache', function() {
+     $exitCode = Artisan::call('cache:clear');
+     return 'Application cache cleared';
+ });
+
+
+ Route::get('/categories/magazine', [
+    'uses' => 'BlogController@magazine',
+    'as' => 'categories.magazine'
+]);
 
 
 

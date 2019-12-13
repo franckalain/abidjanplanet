@@ -18,10 +18,12 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset('/backend/css/skins/_all-skins.min.css')}}">
-
+<!--
   <link rel="stylesheet" href="{{asset('backend/plugins/simplemde/simplemde.min.css')}}">
+  -->
+<!--
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-
+-->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
@@ -51,7 +53,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.6
     </div>
-    <strong>Copyright &copy; 2019 <a href="">NUMERIX</a>.</strong> Tous droits réservés.
+    <strong>Copyright &copy; 2019 <a href="">ABIDJAN PLANET</a>.</strong> Tous droits réservés.
   </footer>
 
 </div>
@@ -62,12 +64,13 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset('backend/js/bootstrap.min.js')}}"></script>
 
+<!--
 <script src="{{asset('backend/plugins/simplemde/simplemde.min.js')}}"></script>
+-->
 
-
-
-
-
+	<!--
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>

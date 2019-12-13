@@ -31,9 +31,12 @@
         });
 
 
+
+
     </script>
+
 @endsection
--->
+
 
 @section('script')
     <script type="text/javascript">
@@ -71,5 +74,6 @@
         });
 
 
-    </script>
-@endsection
+    </script>@endsection
+-->
+

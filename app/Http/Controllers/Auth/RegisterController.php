@@ -78,4 +78,5 @@ class RegisterController extends Controller
     {
         abort('404');
     }
+
 }

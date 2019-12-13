@@ -1,79 +1,32 @@
-<div class="col-md-4">
-    <aside class="right-sidebar">
 
-        <div class="search-widget">
-        <form method="GET" action="/results">
-            <div class="input-group">
-                <input type="text" class="form-control input-lg" name="query" placeholder="Search for...">
-                <span class="input-group-btn">
-                <button class="btn btn-lg btn-default" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-                </span>
+<center><h4>MAGAZINE DU MOIS</h4></center>
+<div class="row space-30 size-18">
+    <div class="col-md-12 col-sm-12">
+        <div class="post-item ver3 overlay">
+            <div class="wrap-images">
+                <a class="images" href="#" title="images"><img class='img-responsive' src="/images/magazine/277.jpg" alt="images"></a>
             </div>
-            </form>
-        </div>
-
-        <div class="widget">
-            <div class="widget-heading">
-                <h4>Categories</h4>
-            </div>
-            <div class="widget-body">
-                <ul class="categories">
-
-                </ul>
+            <div class="text">
+                <h2><a href="" title="title">Décembre 2019</a></h2>
+                <p>Praesent posuere libero eu justo tristique, vitae ultricies justo volutpatInte. Ut luctus justo elit, sit amet...</p>
+                <i class="fa fa-book"> <a href="http://online.fliphtml5.com/ffvkc/fvrv/" target="_blank" style="color:#000; text-decoration: none">Lire</a></i> | <i class="fa fa-download" aria-hidden="true">Télécharger</i>
             </div>
         </div>
-
-        <div class="widget">
-
-            <div class="widget">
-            <div class="widget-heading">
-                <h4>Related Posts</h4>
-            </div>
-            <div class="widget-body">
-                <ul class="popular-posts">
-                @if(isset($relatedPosts))
-                @foreach($relatedPosts as $post)
-                    <li>
-                        @if($post->image_thumb_url)
-                        <div class="post-image">
-                            <a href="{{route('show', $post->slug)}}">
-                                <img src="{{$post->image_thumb_url}}" />
-                            </a>
-                        </div>
-                        @endif
-                        <div class="post-body">
-                            <h6><a href="{{route('show', $post->slug)}}">{{$post->title}}</a></h6>
-                            <div class="post-meta">
-                                <span>{{$post->date}}</span>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                @endif
-                </ul>
-            </div>
-        </div>
-
-        <!--
-        <div class="widget">
-            <div class="widget-heading">
-                <h4>Tags</h4>
-            </div>
-            <div class="widget-body">
-                <ul class="tags">
-                    <li><a href="#">PHP</a></li>
-                    <li><a href="#">Codeigniter</a></li>
-                    <li><a href="#">Yii</a></li>
-                    <li><a href="#">Laravel</a></li>
-                    <li><a href="#">Ruby on Rails</a></li>
-                    <li><a href="#">jQuery</a></li>
-                    <li><a href="#">Vue Js</a></li>
-                    <li><a href="#">React Js</a></li>
-                </ul>
-            </div>
-        </div>
-        -->
-    </aside>
+        <!-- End item -->
+    </div>
 </div>
+<hr>
+<aside class="widget social">
+    <div class="item facebook">
+        <a href="http://online.fliphtml5.com/ffvkc/fvrv" target="_blank" style="color:#000; text-decoration: none"><img src="{{asset('images/magazine/276.jpg')}}" class='img-responsive'></a>
+    </div>
+    <div class="item twitter">
+
+        <a href="http://online.fliphtml5.com/ffvkc/qdcu/" target="_blank" style="color:#000; text-decoration: none"><img src="{{asset('images/magazine/275.jpg')}}" class='img-responsive'></a>
+    </div>
+    <div class="item google">
+        <a href="http://online.fliphtml5.com/sicqy/cmdb/" target="_blank" style="color:#000; text-decoration: none"><img src="{{asset('images/magazine/274.jpg')}}" class='img-responsive'></a>
+    </div>
+</aside>
+<br>
+<h5  style="text-align: center"><a href="{{route('categories.magazine')}}" style="text-decoration: none; color: grey">VOIR TOUT</a></h5>

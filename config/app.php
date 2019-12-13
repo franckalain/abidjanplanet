@@ -137,6 +137,7 @@ return [
     'providers' => [
         Intervention\Image\ImageServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
