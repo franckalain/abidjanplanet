@@ -25,12 +25,12 @@
 
                 <div class="form-group excerpt">
                     {!! Form::label('excerpt') !!}
-                    {!! Form::textarea('excerpt', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('excerpt', null, ['class' => 'form-control', 'id' => 'excerpt']) !!}
                 </div>
 
                 <div class="form-group" {{ $errors->has('body') ? 'has-error' : '' }}>
                     {!! Form::label('body') !!}
-                    {!! Form::textarea('body', null, ['class' => 'form-control', 'id' => 'editor']) !!}
+                    {!! Form::textarea('body', null, ['class' => 'form-control', 'id' => 'summernote']) !!}
 
                     @if($errors->has('body'))
                         <span class="help-block">{{ $errors->first('body') }}</span>
@@ -112,3 +112,6 @@
                     </div>
                 </div>
           </div>
+
+@include('backend.articles.script')
+

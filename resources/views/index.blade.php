@@ -36,7 +36,7 @@
                             <span class="lable">Zoom</span>
                             <a class="images" href="#" title="images">
                                 @if($post->image_url)
-                                <img class="img-responsive" src="{{$post->image_url}}" alt="images" style="width: 1200px; height:530px">
+                                <img class="img-responsive" src="{{$post->image_url}}" alt="images" style="width: 1200px; height:450px">
                                 @endif
                             </a>
                             <div class="text">
@@ -56,7 +56,7 @@
                             <span class="lable">Tourisme</span>
                             <div class="wrap-images">
                                     @if($post->image_url)
-                                    <img class='img-responsive' src="{{$post->image_url}}" alt="images" style="width: 500px; height:250px"></a>
+                                    <img class='img-responsive' src="{{$post->image_url}}" alt="images" style="width: 500px; height:210px"></a>
                                     @endif
                                  </div>
 
@@ -73,7 +73,7 @@
                         @foreach($sport->posts()->orderBy('created_at', 'desc')->take(1)->get() as $post)
                             <span class="lable">Sport</span>
                             @if($post->image_url)
-                            <img class='img-responsive' src="{{$post->image_url}}" alt="images" style="width: 500px; height:250px"></a>
+                            <img class='img-responsive' src="{{$post->image_url}}" alt="images" style="width: 500px; height:210px"></a>
                             @endif
                             <div class="text">
                             <h2><a href="{{route('show', $post->slug)}}">{{$post->title}}</a></h2>
@@ -167,7 +167,7 @@
                          <h4>PETITES ANNONCES</h4>
                              <div class="post-item ver3 overlay">
                                  <div class="wrap-images">
-                                     <a class="images" href="#" title="images"><img class='img-responsive' src="/images/article/annonce.jpg" alt="images"></a>
+                                     <a class="images" href="#" title="images"><img class='img-responsive' src="/images/article/annonce.jpg" alt="images" style="width: 500px; height:170px"></a>
                                      <div class="tag">
 
                                      </div>
@@ -194,7 +194,7 @@
                              @foreach($gourmets->posts()->orderBy('created_at', 'desc')->take(1)->get() as $post)
                                 <div class="wrap-images">
                                     @if($post->image_url)
-                                    <img class='img-responsive' src="{{$post->image_url}}" alt="images"></a>
+                                    <img class='img-responsive' src="{{$post->image_url}}" alt="images" style="width: 500px; height:170px"></a>
                                     @endif
                                  </div>
                                  <div class="text">
@@ -211,7 +211,7 @@
                          <h4>IMMOBILIER</h4>
                              <div class="post-item ver3 overlay">
                                  <div class="wrap-images">
-                                     <a class="images" href="#" title="images"><img class='img-responsive' src="/images/article/immobilier.jpg" alt="images"></a>
+                                     <a class="images" href="#" title="images"><img class='img-responsive' src="/images/article/immobilier.jpg" alt="images" style="width: 500px; height:170px"></a>
                                      <div class="tag">
 
                                      </div>
@@ -310,8 +310,8 @@
                                 <h2><a href="{{route('show', $post->slug)}}">{{$post->title}}</a></h2>
                                     <div class="tag">
 
-                                        <p class="date"><i class="fa fa-clock-o"></i>May 06,2014</p>
-                                        <a class="comments" href="#" title="comments"><i class="fa fa-comments"></i>10</a>
+                                    <p class="date"><i class="fa fa-clock-o"></i> {{$post->created_at->diffForHumans()}}</p>
+
                                     </div>
                                 </div>
 
@@ -325,42 +325,24 @@
                         <hr>
                         <div class="post-bottom-footer box space-30">
 
-                         <!-- End item -->
-                                <div class="post-item ver2 cat-2">
-                                    <a class="images" href="#" title="images"><img class='img-responsive' src="/images/slide/9.jpg" alt="images"></a>
-                                    <div class="text">
-                                        <h2><a href="" title="title">Champions League: Barcelona unstoppable, Manchester United unremarkable</a></h2>
-                                        <div class="tag">
+                        @foreach($cinema->posts()->orderBy('created_at', 'desc')->take(5)->get() as $post)
+                            <div class="post-item ver2">
+                                    <a class="images" href="#" title="images">
+                                        @if($post->image_url)
+                                        <img class="img-responsive" src="{{$post->image_url}}" alt="images">
+                                    </a>
+                                    @endif
+                                <div class="text">
+                                <h2 style="margin-top: -22px"><a href="{{route('show', $post->slug)}}">{{$post->title}}</a></h2>
+                                    <div class="tag">
 
-                                            <p class="date"><i class="fa fa-clock-o"></i>May 06,2014</p>
-                                            <a class="comments" href="#" title="comments"><i class="fa fa-comments"></i>10</a>
-                                        </div>
+
+                                        <p class="date" style="text-align:left">{!! Str::limit($post->excerpt, 70, ' ...') !!}</p>
                                     </div>
                                 </div>
 
-                                <div class="post-item ver2 cat-1">
-                                    <a class="images" href="#" title="images"><img class='img-responsive' src="/images/slide/9.jpg" alt="images"></a>
-                                    <div class="text">
-                                        <h2><a href="" title="title">Surfing News: Best performance, best movie, best barrel and more up for grabs</a></h2>
-                                        <div class="tag">
-
-                                            <p class="date"><i class="fa fa-clock-o"></i>May 06,2014</p>
-                                            <a class="comments" href="#" title="comments"><i class="fa fa-comments"></i>10</a>
-                                        </div>
-                                    </div>
-                                </div>
-                         <!-- End item -->
-                                <div class="post-item ver2 cat-2">
-                                    <a class="images" href="#" title="images"><img class='img-responsive' src="/images/slide/9.jpg" alt="images"></a>
-                                    <div class="text">
-                                        <h2><a href="" title="title">Champions League: Barcelona unstoppable, Manchester United unremarkable</a></h2>
-                                        <div class="tag">
-
-                                            <p class="date"><i class="fa fa-clock-o"></i>May 06,2014</p>
-                                            <a class="comments" href="#" title="comments"><i class="fa fa-comments"></i>10</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                            @endforeach
                          </div>
                          </div>
                             </div>

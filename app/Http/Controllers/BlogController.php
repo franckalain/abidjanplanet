@@ -72,7 +72,8 @@ class BlogController extends Controller
                     ->with('modealaunegauche', Category::find(13))
                     ->with('modealaunedroit', Category::find(14))
                     ->with('mode', Category::find(16))
-                    ->with('magazine', Category::find(17));
+                    ->with('magazine', Category::find(17))
+                    ->with('cinema', Category::find(20));
 
     }
 
@@ -152,7 +153,44 @@ class BlogController extends Controller
                     ->with('modealaunegauche', Category::find(13))
                     ->with('modealaunedroit', Category::find(14))
                     ->with('magazine', Category::find(17))
-                    ->with('immobilier-feature', Category::find(18));
+                    ->with('immobilier-feature', Category::find(18))
+                    ->with('annonces', Category::find(19));
+    }
+
+    public function annonces()
+    {
+        $categories = Category::with(['posts' => function($query){
+            $query->published();
+        }])->orderBy('title', 'asc')->get();
+
+        $posts = Post::with('author')
+        ->latestFirst()
+        ->published();
+
+        if($term = request('term'))
+        {
+            $posts->where('title', 'LIKE', "%{$term}%");
+        }
+
+        $posts = $posts->paginate($this->limit);
+
+        return view("categories.annonces", compact('posts', 'categories', \App\Category::take(50)->get()))
+                    ->with('actualites', Category::find(1))
+                    ->with('zoom', Category::find(2))
+                    ->with('geeks', Category::find(4))
+                    ->with('sport', Category::find(5))
+                    ->with('gourmets', Category::find(6))
+                    ->with('tourisme', Category::find(7))
+                    ->with('video', Category::find(8))
+                    ->with('gazoil', Category::find(9))
+                    ->with('immobilier', Category::find(10))
+                    ->with('fashion', Category::find(11))
+                    ->with('modealaune', Category::find(12))
+                    ->with('modealaunegauche', Category::find(13))
+                    ->with('modealaunedroit', Category::find(14))
+                    ->with('magazine', Category::find(17))
+                    ->with('immobilier-feature', Category::find(18))
+                    ->with('annonces', Category::find(19));
     }
 }
 

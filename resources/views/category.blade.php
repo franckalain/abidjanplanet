@@ -15,7 +15,7 @@
                     <div class="single-post">
                         <div class="blog-post-item cat-1 box">
                             <div class="title-v1 box">
-                                
+
                             </div>
                             <!-- End title -->
                             <div class="row">
@@ -37,7 +37,7 @@
                                 </div>
                             @endforeach
                             </div>
-							
+
                         </div>
                     </div>
 		{{ $posts->links() }}
@@ -56,7 +56,7 @@
                 <h3 class="widget-title">ARTICLES RELATIFS</h3>
                     <div class="content">
 
-                        <!-- End item -->
+
                         @if(isset($relatedPosts))
                         @foreach($relatedPosts as $post)
                         <div class="post-item ver2">

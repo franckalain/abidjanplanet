@@ -90,9 +90,14 @@ Route::get('/clear-cache', function() {
  });
 
 
- Route::get('/categories/magazine', [
+Route::get('/categories/magazine', [
     'uses' => 'BlogController@magazine',
     'as' => 'categories.magazine'
+]);
+
+Route::get('/categories/annonces', [
+    'uses' => 'BlogController@annonces',
+    'as' => 'categories.annonces'
 ]);
 
 
